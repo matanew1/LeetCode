@@ -1,8 +1,9 @@
-#######################################################################
-#  A function that converts ebery roman number to a number in decimal #
-#  The problem called : "Roman to Integer".                           #
-#  Solved by Matan Bardugo                                            #
-#######################################################################
+ ##############################################################################################
+#  A function that converts every roman number to a number in decimal                          #
+#  The problem called : "Roman to Integer"                                                     #
+#  At : https://leetcode.com/explore/interview/card/top-interview-questions-easy/102/math/878/ #
+#  Solved by Matan Bardugo                                                                     #
+ ##############################################################################################
 class Solution(object):
     def romanToInt(self, s):
         romans = {
