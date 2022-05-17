@@ -17,7 +17,6 @@ class Solution(object):
         }
         number = 0
         i = len(s)-1
-        print("start at iteration -->",i)
         while i >= 0:
             if  i == len(s)-1:
                 number += romans[s[i]]
