@@ -26,8 +26,6 @@ class Solution(object):
                 else:
                     number -= romans[s[i]]
             i -=1
-            print("num:",number)
-
         return number
 
 if __name__ == '__main__':
