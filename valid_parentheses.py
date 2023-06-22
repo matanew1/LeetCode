@@ -1,49 +1,30 @@
-'''
-Problem: Valid Parentheses
-Given a string s containing just the characters '(', ')', '{', '}', '[', and ']',
-determine if the input string is valid
-'''
-class Stack:
-    def __init__(self):
-        self.stack = []
-
-    def is_empty(self):
-        return len(self.stack) == 0
-
-    def push(self, item):
-        self.stack.append(item)
-
-    def pop(self):
-        if self.is_empty():
-            return None
-        return self.stack.pop()
-
-    def peek(self):
-        if self.is_empty():
-            return None
-        return self.stack[-1]
-
-    def size(self):
-        return len(self.stack)
-
-parentheses = {'(': ')', '{': '}', '[': ']'}
+parentheses = {')': '(', '}': '{', ']': '['}
+open = ['(', '[', '{']
+close = [')', ']', '}']
 
 def valid_parentheses(string: str):
-    stack = Stack()
+    #define empty stack
+    stack = []
+
     for char in string:
-        # if char is open parentheses push to the stack
-        if char in parentheses.keys():
-            stack.push(char)
-        # if char is close parentheses pop the stack
-        if char in parentheses.values():
-            peek = stack.peek()
-            if peek is None:
+        # if char is open parentheses
+        if char in open:
+            # push the char to the stack
+            stack.append(char)
+
+        # if char is close parentheses
+        elif char in close:
+            # if stack is empty or the open is not type of the close one
+            if not stack or stack.pop() != parentheses[char]:
                 return False
-            if parentheses[peek] == char:
-                stack.pop()
-    if stack.is_empty():
-        return True
+    # return true if the stack is empty
+    return len(stack) == 0
 
 
-
-print(valid_parentheses("(1,[2,l,l,u],{h: 1,v: 2})"))
+assert valid_parentheses("[(])") == False
+assert valid_parentheses("[])") == False
+assert valid_parentheses("[]()") == True
+assert valid_parentheses("(())") == True
+assert valid_parentheses("(){}") == True
+assert valid_parentheses("[(){})") == False
+assert valid_parentheses("((){})") == True
